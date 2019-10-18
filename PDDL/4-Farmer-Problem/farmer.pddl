@@ -3,7 +3,7 @@
 	(:requirements :adl)
 	(:types farmer)
 	(:predicates
-		(lokacja ?x)
+		(zachod ?x)
 		(moze_zjesc ?x ?y)
 	)
 	
@@ -11,22 +11,22 @@
 		:parameters (?f - farmer ?x - object)
 		:precondition
 		(and
-			(not (lokacja ?f))
-			(not (lokacja ?x))
+			(not (zachod ?f))
+			(not (zachod ?x))
 			(not (exists (?o1 ?o2)
 				(and
 					(not (= ?o1 ?x))
 					(not (= ?o2 ?x))
 					(moze_zjesc ?o1 ?o2)
-					(not (lokacja ?o1))
-					(not (lokacja ?o2))
+					(not (zachod ?o1))
+					(not (zachod ?o2))
 				)
 			))
 		)
 		:effect
 		(and
-			(lokacja ?f)
-			(lokacja ?x)
+			(zachod ?f)
+			(zachod ?x)
 		)
 	)
 	
@@ -34,22 +34,22 @@
 		:parameters (?f - farmer ?x - object)
 		:precondition
 		(and
-			(lokacja ?f)
-			(lokacja ?x)
+			(zachod ?f)
+			(zachod ?x)
 			(not (exists (?o1 ?o2)
 				(and
 					(not (= ?o1 ?x))
 					(not (= ?o2 ?x))
 					(moze_zjesc ?o1 ?o2)
-					(lokacja ?o1)
-					(lokacja ?o2)
+					(zachod ?o1)
+					(zachod ?o2)
 				)
 			))
 		)
 		:effect
 		(and 
-			(not (lokacja ?f))
-			(not (lokacja ?x))
+			(not (zachod ?f))
+			(not (zachod ?x))
 		)
 	)
 )
