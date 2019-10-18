@@ -1,1 +1,1 @@
-Exercises for Artificial Intelligence course.
+Exercises for an Artificial Intelligence course.
