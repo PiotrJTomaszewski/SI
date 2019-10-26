@@ -1,0 +1,77 @@
+(define (problem p1)
+	(:domain star_traveller)
+	(:objects p1 p2 p3 p4 p5 p6 - planet
+	  p7 - final_planet
+	  d1 d3 d4 d5 d6 - lever
+	  b1 - button
+	  sa sb sc sd se - star
+	  ; Nazwy krawędzi odpowiadają nazwom gwiazd, które mają się na nich znaleźć
+	  ea eb ec ed ee ef - edge)
+	(:init
+	(on_planet p1)
+	(is_barrier p4 d1)
+	(button_on_planet p5 b1)
+	(puzzle_on_planet p6)
+	
+	(lever_on_planet p1 d1)
+	(lever_on_planet p2 d3)
+	(lever_on_planet p4 d1)
+	(lever_on_planet p4 d4)
+	(lever_on_planet p5 d5)
+	(lever_on_planet p6 d6)
+	
+	(is_teleport_lever p1 p2 d1)
+	(is_teleport_lever p2 p1 d1)
+	(is_teleport_lever p1 p6 d5)
+	(is_teleport_lever p6 p1 d5)
+	(is_teleport p2 p3)
+	(is_teleport p3 p2)
+	(is_teleport_lever p3 p4 d3)
+	(is_teleport_lever p4 p3 d3)
+	(is_teleport_lever p3 p5 d4)
+	(is_teleport_lever p5 p3 d4)
+	(is_teleport p4 p5)
+	(is_teleport p5 p4)
+	(is_teleport_lever p6 p7 d6)
+	(is_teleport_lever p7 p6 d6)
+	
+	(edge_connected ea eb)
+	(edge_connected ea ef)
+	(edge_connected ea ee)
+	(edge_connected eb ea)
+	(edge_connected eb ef)
+	(edge_connected eb ec)
+	(edge_connected ec eb)
+	(edge_connected ec ef)
+	(edge_connected ec ed)
+	(edge_connected ed ec)
+	(edge_connected ed ef)
+	(edge_connected ed ee)
+	(edge_connected ee ed)
+	(edge_connected ee ef)
+	(edge_connected ee ea)
+	(edge_connected ef ea)
+	(edge_connected ef eb)
+	(edge_connected ef ec)
+	(edge_connected ef ed)
+	(edge_connected ef ee)
+	
+	(star_on_edge ea sd)
+	(star_on_edge eb se)
+	(star_on_edge ec sa)
+	(star_on_edge ed sb)
+	(edge_empty ee)
+	(star_on_edge ef sc)
+	
+	(correct_edge_for_star ea sa)
+	(correct_edge_for_star eb sb)
+	(correct_edge_for_star ec sc)
+	(correct_edge_for_star ed sd)
+	(correct_edge_for_star ee se)
+	)
+	(:goal
+		(and
+			(on_planet p7)
+		)
+	)
+)
